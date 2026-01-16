@@ -1,6 +1,8 @@
 # Undertale Clone i.e GodTale
 
-A fan-made Undertale-inspired game built with Godot Engine 4.4. This project recreates the core gameplay mechanics of Undertale, including turn-based combat with bullet-hell patterns, exploration, boss battles, and a shop system.
+A fan-made Undertale-inspired game built with Godot Engine 4.4 using **C#**. This project recreates the core gameplay mechanics of Undertale, including turn-based combat with bullet-hell patterns, exploration, boss battles, and a shop system.
+
+> **Note**: This is a C# conversion of the original GDScript project. The original GDScript version can be found at: [https://github.com/JuhaszLaszlo69/dusttale_mytake](https://github.com/JuhaszLaszlo69/dusttale_mytake)
 
 ## Features
 
@@ -59,34 +61,79 @@ A fan-made Undertale-inspired game built with Godot Engine 4.4. This project rec
 ## Project Structure
 
 ```
-dusttale_mytake/
+GodTale/
 ├── autoloads/          # Global game state management
-│   ├── global.gd       # Boss tracking, EXP/Gold, inventory
-│   └── fade_to_black.gd # Scene transition system
+│   ├── Global.cs       # Boss tracking, EXP/Gold, inventory
+│   └── FadeToBlack.cs  # Scene transition system
 ├── battle/             # Battle system
-│   ├── battle.gd       # Main battle logic
+│   ├── Battle.cs       # Main battle logic
+│   ├── BattleZone.cs   # Battle zone detection
+│   ├── TextBox.cs      # Battle text display
+│   ├── MonsterDialouge.cs # Monster dialogue system
 │   └── battle.tscn     # Battle scene
 ├── bullets/            # Bullet patterns and mechanics
+│   ├── Bullet.cs       # Base bullet class
+│   ├── LinearBullet.cs # Linear bullet type
+│   ├── FollowerBullet.cs # Follower bullet type
+│   └── JumpObstacle.cs # Jump obstacle type
 ├── cutscenes/          # Story cutscenes
-│   └── all_bosses_defeated/ # End-game cutscene
+│   ├── AllBossesDefeated.cs # End-game cutscene logic
+│   └── all_bosses_defeated.tscn # End-game cutscene
 ├── enemy_data/         # Enemy/boss definitions
+│   ├── Enemy.cs        # Base enemy class
+│   ├── Cherry.cs       # Cherry boss
+│   ├── Poseur.cs       # Poseur boss
+│   ├── Present.cs      # Present boss
+│   ├── GodotEnemy.cs   # Godot boss
 │   ├── cherry.tscn
 │   ├── poseur.tscn
 │   ├── present.tscn
 │   └── godot.tscn
 ├── items/              # Item resources
+│   ├── Item.cs         # Item class
 │   ├── apple.tres
 │   ├── nice_cream.tres
 │   └── pie.tres
 ├── maps/               # Game maps
+│   ├── MainMap.cs      # Main map logic
+│   ├── OverworldOriginal.cs # Overworld logic
+│   ├── Door.cs         # Door transition logic
+│   ├── Door2.cs        # Alternative door logic
 │   ├── main_map.tscn   # Main exploration map
 │   └── overworld_original.tscn # Tavern/shop map
 ├── shop/               # Shop system
-│   ├── shop.gd         # Shop logic
+│   ├── Shop.cs         # Shop logic
+│   ├── ShopEntrance.cs # Shop entrance detection
+│   ├── ShopCollision.cs # Shop collision detection
+│   ├── ShopUiOverlay.cs # Shop UI overlay
 │   └── shop.tscn       # Shop scene
 ├── soul/               # Soul mechanics
+│   ├── Soul.cs         # Soul movement and modes
+│   ├── YellowShot.cs   # Yellow soul shooting
+│   └── Particle.cs     # Particle effects
 ├── text_box/           # Dialogue system
-└── waves/              # Bullet wave patterns
+│   ├── MonsterTextBox.cs # Monster text box
+│   ├── CustomButton.cs # Custom button component
+│   └── Util.cs         # Text utility functions
+├── waves/              # Bullet wave patterns
+│   ├── Wave.cs         # Base wave class
+│   ├── Shoot1.cs       # Shooting pattern 1
+│   ├── Shoot2.cs       # Shooting pattern 2
+│   ├── Shoot3.cs       # Shooting pattern 3
+│   ├── Jump.cs         # Jump pattern
+│   ├── Jump2.cs        # Jump pattern 2
+│   ├── FollowSoul.cs   # Follow soul pattern
+│   ├── SpinningStorm.cs # Spinning storm pattern
+│   ├── SpinningStorm2.cs # Spinning storm pattern 2
+│   └── DiamondsFromBelow.cs # Diamonds pattern
+├── player/             # Player character
+│   └── Scripts/
+│       └── Jugador.cs  # Player movement and controls
+├── intermediate_scenes/ # Intermediate scenes
+│   ├── TitleScreen.cs  # Title screen logic
+│   └── title_screen.tscn # Title screen scene
+├── UndertaleBattle.csproj # C# project file
+└── UndertaleBattle.sln  # C# solution file
 ```
 
 ## Technical Details
@@ -97,7 +144,7 @@ The `Global` autoload singleton manages:
 - **Currency**: `player_exp` and `player_gold` for shop purchases
 - **Inventory**: `battle_inventory` array stores collected items
 - **Position Tracking**: `last_scene_path` and `last_player_position` for seamless transitions
-- **Progression**: `all_bosses_killed()` checks for end-game condition
+- **Progression**: `AllBossesKilled()` checks for end-game condition
 
 ### Battle System
 - Turn-based combat with bullet-hell patterns
@@ -138,11 +185,17 @@ The title screen includes debug options:
 ## Requirements
 
 - **Godot Engine**: Version 4.4 or later
+- **.NET SDK**: Required for C# support (Godot 4.4+ includes .NET support)
 - **Platform**: Windows, Linux, or macOS
+- **C# Support**: Must have C# enabled in Godot project settings
 
 ## Credits
 
 This is a fan-made project inspired by Undertale by Toby Fox. All original Undertale assets, music, and concepts belong to their respective owners.
+
+**Original GDScript Version**: [https://github.com/JuhaszLaszlo69/dusttale_mytake](https://github.com/JuhaszLaszlo69/dusttale_mytake)
+
+This C# version is a conversion of the original GDScript implementation.
 
 ## License
 

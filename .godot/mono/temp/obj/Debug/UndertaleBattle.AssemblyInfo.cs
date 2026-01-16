@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UndertaleBattle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7c132726cdc93c18e6b4022fe3236695d78fd32")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a50d78d021880d68feddcd938024bbc7eb5dbd3")]
 [assembly: System.Reflection.AssemblyProductAttribute("UndertaleBattle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UndertaleBattle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,28 +1,30 @@
 # Complete Project Explanation - GodTale
 
+> **Note**: This is a C# conversion of the original GDScript project. The original GDScript version can be found at: [https://github.com/JuhaszLaszlo69/dusttale_mytake](https://github.com/JuhaszLaszlo69/dusttale_mytake)
+
 ## 🎮 Core Architecture
 
 ### **Autoload Singletons (Global State)**
 The game uses two autoload singletons that persist across all scenes:
 
-1. **`Global`** (`autoloads/global.gd`)
+1. **`Global`** (`autoloads/Global.cs`)
    - **Boss Tracking**: `killed_bosses` array tracks which bosses have been defeated
    - **Currency**: `player_exp` and `player_gold` for shop purchases
    - **Inventory**: `battle_inventory` array stores all collected items
    - **Position Tracking**: `last_scene_path` and `last_player_position` save where the player was before entering battles/shops
    - **Boss List**: `BOSS_NAMES = ["Cherry", "Poseur", "Present", "Godot"]`
-   - **Methods**: `mark_boss_killed()`, `is_boss_killed()`, `all_bosses_killed()`, `add_exp()`, `spend_exp()`, `spend_gold()`, `add_item_to_inventory()`
+   - **Methods**: `MarkBossKilled()`, `IsBossKilled()`, `AllBossesKilled()`, `AddExp()`, `SpendExp()`, `SpendGold()`, `AddItemToInventory()`
 
-2. **`Fade`** (`autoloads/fade_to_black.tscn`)
+2. **`Fade`** (`autoloads/FadeToBlack.cs`)
    - Handles scene transitions with fade-to-black animations
-   - Methods: `fade_into_black()`, `fade_from_black()`
+   - Methods: `FadeIntoBlack()`, `FadeFromBlack()`
    - Used whenever transitioning between scenes (battles, shops, maps)
 
 ---
 
 ## 🗺️ Scene Flow & Navigation
 
-### **Title Screen** (`intermediate_scenes/title_screen.tscn`)
+### **Title Screen** (`intermediate_scenes/TitleScreen.cs` / `intermediate_scenes/title_screen.tscn`)
 - **Entry Point**: Game starts here (set in `project.godot`)
 - **Features**:
   - "Go to Overworld" button → Takes you to `overworld_original.tscn` (tavern/shop area)
@@ -30,25 +32,25 @@ The game uses two autoload singletons that persist across all scenes:
   - "[DEBUG] View Cutscene" → View end-game cutscene without completing game
 - **Purpose**: Menu system for navigation and testing
 
-### **Main Map** (`maps/main_map.tscn`)
+### **Main Map** (`maps/MainMap.cs` / `maps/main_map.tscn`)
 - **Primary Exploration Area**: Where players encounter bosses
 - **Features**:
   - Displays player inventory, EXP, and Gold in UI
   - Hides boss sprites if they're already defeated
   - Restores player position when returning from battles
   - Automatically triggers end-game cutscene if all bosses are defeated
-- **Boss Zones**: `battle/battle_zone.gd` Area2D nodes detect when player enters and start battles
+- **Boss Zones**: `battle/BattleZone.cs` Area2D nodes detect when player enters and start battles
 
-### **Overworld Original** (`maps/overworld_original.tscn`)
+### **Overworld Original** (`maps/OverworldOriginal.cs` / `maps/overworld_original.tscn`)
 - **Tavern/Shop Area**: Where players can access the shop
-- **Shop Entrance**: `shop/shop_collision.gd` or `shop/shop_entrance.gd` detect player and allow shop access
-- **Doors**: `maps/door.gd` and `maps/door2.gd` handle scene transitions between areas
+- **Shop Entrance**: `shop/ShopCollision.cs` or `shop/ShopEntrance.cs` detect player and allow shop access
+- **Doors**: `maps/Door.cs` and `maps/Door2.cs` handle scene transitions between areas
 
 ---
 
 ## ⚔️ Battle System
 
-### **Battle Flow** (`battle/battle.gd`)
+### **Battle Flow** (`battle/Battle.cs`)
 
 **Initialization:**
 1. Battle scene loads with fade-in
@@ -93,7 +95,7 @@ The game uses two autoload singletons that persist across all scenes:
 - Damage = `(575 - distance_from_centre) / 10`
 - Visual feedback: Knife animation, damage number, monster hurt animation
 
-### **Soul Modes** (`soul/soul.gd`)
+### **Soul Modes** (`soul/Soul.cs`)
 The soul (player's representation in bullet hell) has 3 modes:
 
 1. **RED Soul**:
@@ -120,14 +122,14 @@ The soul (player's representation in bullet hell) has 3 modes:
 - When hit: HP decreases, soul flashes, sound plays
 
 ### **Bullet Waves** (`waves/`)
-- Each wave is a scene that extends `Wave` class
+- Each wave is a scene that extends `Wave` class (`waves/Wave.cs`)
 - Waves define:
   - `mode`: Which soul mode to use (RED/BLUE/YELLOW)
   - `box_size`: Size of battle box during wave
   - `box_size_change_time`: Animation duration
 - Waves spawn bullets using timers
 - When wave completes, emits `Global.wave_done` signal
-- Examples: `shoot_1.gd`, `shoot_2.gd`, `jump.gd`, `spinning_storm.gd`, etc.
+- Examples: `Shoot1.cs`, `Shoot2.cs`, `Shoot3.cs`, `Jump.cs`, `Jump2.cs`, `SpinningStorm.cs`, `SpinningStorm2.cs`, `FollowSoul.cs`, `DiamondsFromBelow.cs`, etc.
 
 ### **Bullet Types** (`bullets/`)
 - **Linear Bullet**: Moves in straight line at constant speed
@@ -139,7 +141,7 @@ The soul (player's representation in bullet hell) has 3 modes:
 
 ## 👾 Enemy System
 
-### **Enemy Base Class** (`enemy_data/enemy.gd`)
+### **Enemy Base Class** (`enemy_data/Enemy.cs`)
 - **Properties**:
   - `enemy_name`: Display name
   - `HP`: Health points
@@ -150,26 +152,26 @@ The soul (player's representation in bullet hell) has 3 modes:
   - `encounter_text`: Text shown when battle starts
 
 - **Methods** (overridden by specific enemies):
-  - `do_act_get_text(act_name)`: Returns text when player performs action
-  - `get_idle_text()`: Returns text shown during idle turns
-  - `get_monster_text()`: Returns text when monster speaks
+  - `DoActGetText(act_name)`: Returns text when player performs action
+  - `GetIdleText()`: Returns text shown during idle turns
+  - `GetMonsterText()`: Returns text when monster speaks
 
 ### **Bosses**
-1. **Cherry** (`enemy_data/cherry.gd`)
+1. **Cherry** (`enemy_data/Cherry.cs`)
    - Acts: "Cheer", "Football", "Check"
    - Mercy increases when player cheers or talks about football
    - Unique dialogue based on actions
 
-2. **Poseur** (`enemy_data/poseur.tscn`)
+2. **Poseur** (`enemy_data/Poseur.cs`)
    - Custom battle patterns
 
-3. **Present** (`enemy_data/present.tscn`)
+3. **Present** (`enemy_data/Present.cs`)
    - Custom battle patterns
 
-4. **Godot** (`enemy_data/godot.tscn`)
+4. **Godot** (`enemy_data/GodotEnemy.cs`)
    - Custom battle patterns
 
-### **Battle Zone** (`battle/battle_zone.gd`)
+### **Battle Zone** (`battle/BattleZone.cs`)
 - Area2D that detects when player enters
 - Checks if boss is already killed (hides zone if so)
 - Saves current scene path and player position
@@ -182,12 +184,12 @@ The soul (player's representation in bullet hell) has 3 modes:
 
 ### **Shop Scene** (`shop/shop.tscn`)
 - **Menu Navigation**: Cursor-based system with arrow keys
-- **Shop Items** (defined in `shop.gd`):
+- **Shop Items** (defined in `shop/Shop.cs`):
   - Apple: 10 EXP, 5 Gold
   - Nice Cream: 15 EXP, 8 Gold
   - Pie: 20 EXP, 10 Gold
 
-### **Shop Flow** (`shop/shop.gd`)
+### **Shop Flow** (`shop/Shop.cs`)
 1. **Greeting**: Shopkeeper greets player
 2. **Buy Menu**: Player navigates items with arrow keys
 3. **Item Info**: Shows item name and costs
@@ -198,7 +200,7 @@ The soul (player's representation in bullet hell) has 3 modes:
 6. **Exit**: Returns to previous scene at saved position
 
 ### **Shop Access**
-- `shop/shop_collision.gd` or `shop/shop_entrance.gd` detect player in overworld
+- `shop/ShopCollision.cs` or `shop/ShopEntrance.cs` detect player in overworld
 - Saves scene and position before entering shop
 - Transitions with fade
 
@@ -208,6 +210,7 @@ The soul (player's representation in bullet hell) has 3 modes:
 
 ### **Item System** (`items/`)
 - Items are `.tres` resource files
+- Item class defined in `items/Item.cs`
 - Properties: `item_name`, `amount` (healing), `text` (description)
 - Items: `apple.tres`, `nice_cream.tres`, `pie.tres`
 
@@ -221,7 +224,7 @@ The soul (player's representation in bullet hell) has 3 modes:
 
 ## 🎬 Cutscenes
 
-### **End-Game Cutscene** (`cutscenes/all_bosses_defeated.tscn`)
+### **End-Game Cutscene** (`cutscenes/AllBossesDefeated.cs` / `cutscenes/all_bosses_defeated.tscn`)
 - **Trigger**: Automatically when all 4 bosses are defeated
 - **Content**: 
   - Series of messages displayed with typing effect
@@ -234,10 +237,10 @@ The soul (player's representation in bullet hell) has 3 modes:
 ## 🎨 UI Systems
 
 ### **Text Box** (`text_box/`)
-- `text_box.gd`: Handles scrolling text display
-- `monster_text_box.gd`: Handles monster speech bubbles
-- `button.gd`: Custom button with shake effects
-- `util.gd`: Utility functions for text effects (shake, wave)
+- `battle/TextBox.cs`: Handles scrolling text display in battles
+- `text_box/MonsterTextBox.cs`: Handles monster speech bubbles
+- `text_box/CustomButton.cs`: Custom button with shake effects
+- `text_box/Util.cs`: Utility functions for text effects (shake, wave)
 
 ### **Battle UI**
 - HP Bar: Shows player HP (max 20)
@@ -308,8 +311,8 @@ The soul (player's representation in bullet hell) has 3 modes:
 ## 🛠️ Technical Details
 
 ### **Scene Transitions:**
-- Always use `Fade.fade_into_black()` before changing scenes
-- Always use `Fade.fade_from_black()` when scene loads
+- Always use `Fade.FadeIntoBlack()` before changing scenes
+- Always use `Fade.FadeFromBlack()` when scene loads
 - Player position is saved before transitions
 - Position is restored when returning
 
@@ -350,16 +353,18 @@ The soul (player's representation in bullet hell) has 3 modes:
 
 ## 📝 Key Files Reference
 
-- **Global State**: `autoloads/global.gd`
-- **Battle Logic**: `battle/battle.gd`
-- **Player Movement**: `player/Scripts/jugador epica.gd`
-- **Soul Mechanics**: `soul/soul.gd`
-- **Enemy Base**: `enemy_data/enemy.gd`
-- **Shop Logic**: `shop/shop.gd`
-- **Battle Zones**: `battle/battle_zone.gd`
-- **Fade System**: `autoloads/fade_to_black.gd`
-- **Main Map**: `maps/main_map.gd`
-- **Title Screen**: `intermediate_scenes/title_screen.gd`
+- **Global State**: `autoloads/Global.cs`
+- **Battle Logic**: `battle/Battle.cs`
+- **Player Movement**: `player/Scripts/Jugador.cs`
+- **Soul Mechanics**: `soul/Soul.cs`
+- **Enemy Base**: `enemy_data/Enemy.cs`
+- **Shop Logic**: `shop/Shop.cs`
+- **Battle Zones**: `battle/BattleZone.cs`
+- **Fade System**: `autoloads/FadeToBlack.cs`
+- **Main Map**: `maps/MainMap.cs`
+- **Title Screen**: `intermediate_scenes/TitleScreen.cs`
+- **C# Project**: `UndertaleBattle.csproj`
+- **C# Solution**: `UndertaleBattle.sln`
 
 ---
 
