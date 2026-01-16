@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://byrdnb2dtwnud"
+path="res://.godot/imported/Undertale Sound Effect - Attack Hit 4.mp3-f100514efe8db68ceacdaad209c93b9a.mp3str"
+
+[deps]
+
+source_file="res://sounds/Undertale Sound Effect - Attack Hit 4.mp3"
+dest_files=["res://.godot/imported/Undertale Sound Effect - Attack Hit 4.mp3-f100514efe8db68ceacdaad209c93b9a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://bghmxuapoqdkl"]
+
+[ext_resource type="Script" uid="uid://cqb4vdhlbwh8e" path="res://enemy_data/Present.cs" id="1_kvdy5"]
+[ext_resource type="Texture2D" uid="uid://cyplkly6rcn5k" path="res://sprites/Present_Enemy_1_battle.webp" id="2_otxd1"]
+[ext_resource type="PackedScene" uid="uid://cxfj73jvyfisf" path="res://waves/shoot_1.tscn" id="3_244bd"]
+[ext_resource type="PackedScene" uid="uid://d4n3v4xusjbjm" path="res://waves/shoot_3.tscn" id="3_my634"]
+[ext_resource type="PackedScene" uid="uid://bca2m45j3lmyb" path="res://waves/shoot_2.tscn" id="3_perkx"]
+
+[node name="Present" type="Node"]
+script = ExtResource("1_kvdy5")
+EnemyName = "Present"
+HP = 500
+Sprite = ExtResource("2_otxd1")
+Acts = Array[String](["Check", "Gift", "Peek", "Wait"])
+BulletWaves = Array[PackedScene]([ExtResource("3_244bd"), ExtResource("3_perkx"), ExtResource("3_my634")])
+EncounterText = "* Present dropped from above!"

@@ -1,0 +1,99 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://ipyeg1txoqs7"]
+
+[ext_resource type="Texture2D" uid="uid://dpypyeq5m4bna" path="res://Assets/Sprites/Tiles/large_labyrinth.png" id="1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_giomh"]
+texture = ExtResource("1")
+6:8/size_in_atlas = Vector2i(6, 6)
+6:8/0 = 0
+2:2/size_in_atlas = Vector2i(2, 6)
+2:2/0 = 0
+2:8/size_in_atlas = Vector2i(2, 6)
+2:8/0 = 0
+2:14/size_in_atlas = Vector2i(2, 6)
+2:14/0 = 0
+6:14/size_in_atlas = Vector2i(6, 6)
+6:14/0 = 0
+6:2/size_in_atlas = Vector2i(6, 6)
+6:2/0 = 0
+14:2/size_in_atlas = Vector2i(4, 6)
+14:2/0 = 0
+14:8/size_in_atlas = Vector2i(4, 6)
+14:8/0 = 0
+20:2/size_in_atlas = Vector2i(4, 6)
+20:2/0 = 0
+20:8/size_in_atlas = Vector2i(4, 6)
+20:8/0 = 0
+14:14/size_in_atlas = Vector2i(4, 6)
+14:14/0 = 0
+20:14/size_in_atlas = Vector2i(4, 6)
+20:14/0 = 0
+4:22/size_in_atlas = Vector2i(2, 2)
+4:22/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+3:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7a4ou"]
+texture = ExtResource("1")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hhwbe"]
+texture = ExtResource("1")
+margins = Vector2i(416, 224)
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yn3wg"]
+texture = ExtResource("1")
+margins = Vector2i(448, 224)
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_giomh")
+sources/1 = SubResource("TileSetAtlasSource_7a4ou")
+sources/2 = SubResource("TileSetAtlasSource_hhwbe")
+sources/3 = SubResource("TileSetAtlasSource_yn3wg")

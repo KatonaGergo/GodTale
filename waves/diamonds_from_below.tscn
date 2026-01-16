@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://mj5bf0hhbi2k"]
+
+[ext_resource type="Script" uid="uid://djtvkv1g36155" path="res://waves/DiamondsFromBelow.cs" id="1_3q2o1"]
+[ext_resource type="PackedScene" uid="uid://b8swhgvxqle3i" path="res://waves/wave.tscn" id="1_8gvag"]
+[ext_resource type="PackedScene" uid="uid://vy7eelm7fbgd" path="res://bullets/linear_bullet.tscn" id="3_5xn7v"]
+
+[sub_resource type="Curve2D" id="Curve2D_5xn7v"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -300, 0, 0, 0, 0, 0, 300, 0)
+}
+point_count = 2
+
+[node name="DiamondsFromBelow" instance=ExtResource("1_8gvag")]
+script = ExtResource("1_3q2o1")
+BulletScene = ExtResource("3_5xn7v")
+
+[node name="Path2D" type="Path2D" parent="." index="0"]
+curve = SubResource("Curve2D_5xn7v")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+unique_name_in_owner = true
+position = Vector2(-300, 0)
+
+[node name="SpawnTimer" parent="." index="1"]
+wait_time = 0.1

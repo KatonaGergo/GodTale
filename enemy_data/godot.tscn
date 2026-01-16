@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://ycbjbgr0j33j"]
+
+[ext_resource type="Script" uid="uid://b8e8qiutegf5o" path="res://enemy_data/GodotEnemy.cs" id="1_emke6"]
+[ext_resource type="Texture2D" uid="uid://cllhluuapyh2q" path="res://sprites/icon_monochrome_dark.png" id="2_8eifk"]
+[ext_resource type="PackedScene" uid="uid://mlb50vg57cn7" path="res://waves/follow_soul.tscn" id="3_sbvsa"]
+[ext_resource type="PackedScene" uid="uid://mj5bf0hhbi2k" path="res://waves/diamonds_from_below.tscn" id="4_33x53"]
+
+[node name="Godot" type="Node"]
+script = ExtResource("1_emke6")
+EnemyName = "Godot"
+HP = 500
+Sprite = ExtResource("2_8eifk")
+SpriteScale = 0.2
+Acts = Array[String](["Check", "Insult", "Chat"])
+BulletWaves = Array[PackedScene]([ExtResource("3_sbvsa"), ExtResource("4_33x53")])
+EncounterText = "* Godot is _ready() for a fight!"

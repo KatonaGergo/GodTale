@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://tly4ac72poq7"]
+
+[ext_resource type="Texture2D" uid="uid://ck5iwib4fr77x" path="res://sprites/red_soul.svg.png" id="1_llyy4"]
+[ext_resource type="Script" uid="uid://vm38somiibp1" path="res://soul/Soul.cs" id="1_rujom"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_53ixt"]
+radius = 17.5446
+
+[sub_resource type="Animation" id="Animation_53ixt"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_rujom"]
+resource_name = "hurt"
+length = 0.05
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53ixt"]
+_data = {
+&"RESET": SubResource("Animation_53ixt"),
+&"hurt": SubResource("Animation_rujom")
+}
+
+[node name="Soul" type="CharacterBody2D" groups=["soul"]]
+z_index = 1
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_rujom")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_llyy4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-15, -18.75, -10, -18.75, -10, -16.25, -6.25, -16.25, -6.25, -13.75, -3.75, -13.75, -3.75, -8.75, 3.75, -8.75, 3.75, -13.75, 7.5, -13.75, 7.5, -16.25, 11.25, -16.25, 11.25, -18.75, 13.75, -18.75, 13.75, -16.25, 16.25, -16.25, 16.25, -12.5, 18.75, -12.5, 18.75, 3.75, 13.75, 3.75, 13.75, 8.75, 8.75, 8.75, 8.75, 13.75, 3.75, 13.75, 3.75, 22.5, -2.5, 22.5, -2.5, 13.75, -8.75, 13.75, -8.75, 8.75, -13.75, 8.75, -13.75, 3.75, -18.75, 3.75, -18.75, -13.75, -16.25, -13.75, -16.25, -16.25, -15, -16.25)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_53ixt")
+
+[node name="invincibilityTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="SoulAnim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_53ixt")
+}
+
+[node name="ShootTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="invincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

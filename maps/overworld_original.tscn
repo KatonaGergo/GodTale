@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=3 uid="uid://n60alop615ch"]
+
+[ext_resource type="Texture2D" uid="uid://ydsart1o6wwj" path="res://maps/Snowdin/Grillbys/Sprites/a_hot.png" id="1"]
+[ext_resource type="Script" uid="uid://do6kydv1fqpom" path="res://maps/OverworldOriginal.cs" id="1_735m8"]
+[ext_resource type="Texture2D" uid="uid://16j66fp5bafh" path="res://maps/Snowdin/Grillbys/Sprites/barra.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://3fycnn40a6q" path="res://player/Jugador.tscn" id="3"]
+[ext_resource type="Script" uid="uid://fnj2sx0kgknw" path="res://maps/Door.cs" id="5"]
+[ext_resource type="Texture2D" uid="uid://n5nrdc0nppl4" path="res://shop/shopkeeper.png" id="7_1ohu6"]
+[ext_resource type="Script" uid="uid://d2ybodeikb7nm" path="res://shop/ShopCollision.cs" id="10_shop_collision"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(35, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shop"]
+size = Vector2(35, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i5doc"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_735m8")
+
+[node name="mapa" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="sprites" type="Node2D" parent="mapa"]
+
+[node name="fondo" type="Sprite2D" parent="mapa/sprites"]
+texture = ExtResource("1")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="mapa/sprites"]
+z_index = 1
+position = Vector2(158.525, 82.4081)
+texture = ExtResource("2")
+
+[node name="TopDoor" type="Area2D" parent="mapa"]
+position = Vector2(158.525, 20)
+script = ExtResource("5")
+target_scene = "res://maps/main_map.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mapa/TopDoor"]
+position = Vector2(-105.525, 7)
+shape = SubResource("RectangleShape2D_2")
+
+[node name="Label" type="Label" parent="mapa/TopDoor"]
+offset_left = -140.025
+offset_top = -48.0
+offset_right = -52.025
+offset_bottom = -18.0
+text = "Press Enter"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ShopCollision" type="Area2D" parent="mapa"]
+position = Vector2(158.525, 82.4081)
+script = ExtResource("10_shop_collision")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mapa/ShopCollision"]
+position = Vector2(4.47501, 21.5919)
+shape = SubResource("RectangleShape2D_shop")
+
+[node name="colisiones" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="colisiones"]
+position = Vector2(231, 206)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_i5doc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="colisiones"]
+position = Vector2(279, 206)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_i5doc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="colisiones"]
+position = Vector2(375, 206)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_i5doc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="colisiones"]
+position = Vector2(426, 206)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_i5doc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="colisiones"]
+position = Vector2(505, 158)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_i5doc")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="colisiones"]
+position = Vector2(505, 110)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_i5doc")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="colisiones"]
+polygon = PackedVector2Array(39, 96, 38, 458, 310, 460, 310, 479, 401, 480, 401, 460, 602, 462, 601, 96, 584, 96, 583, 147, 528, 147, 528, 96, 485, 97, 482, 186, 464, 198, 193, 198, 188, 180, 199, 165, 451, 165, 450, 123, 197, 124, 193, 118, 194, 96, 46, 96, 45, -64, 208, -66, 458, -60, 719, -62, 716, 149, 716, 469, 718, 599, 403, 591, 232, 589, 1, 586, -100, 585, -109, 451, -116, 293, -117, 114, -118, -31, -118, -67, 155, -72)
+
+[node name="Objetos" type="Node2D" parent="."]
+
+[node name="Jugador" parent="Objetos" instance=ExtResource("3")]
+position = Vector2(106, 114)
+
+[node name="ExpUILayer" type="CanvasLayer" parent="."]
+
+[node name="ExpUI" type="Control" parent="ExpUILayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -280.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 110.0
+grow_horizontal = 0
+
+[node name="ExpLabel" type="Label" parent="ExpUILayer/ExpUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "EXP: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="ExpUILayer/ExpUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Gold: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ShopKeeper" type="Sprite2D" parent="."]
+position = Vector2(329, 128)
+scale = Vector2(0.435484, 0.435484)
+texture = ExtResource("7_1ohu6")
+hframes = 2

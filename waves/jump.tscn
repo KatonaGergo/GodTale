@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdy881pi383i1"]
+
+[ext_resource type="Script" uid="uid://d3t4kdhl032p8" path="res://waves/Jump.cs" id="1_bbm7g"]
+[ext_resource type="PackedScene" uid="uid://b8swhgvxqle3i" path="res://waves/wave.tscn" id="1_rv5qy"]
+[ext_resource type="PackedScene" uid="uid://mo6ifyrp7ntd" path="res://bullets/jump_obstacle.tscn" id="3_385jq"]
+
+[node name="Jump" instance=ExtResource("1_rv5qy")]
+script = ExtResource("1_bbm7g")
+Mode = 1
+BulletScene = ExtResource("3_385jq")
+
+[node name="SpawnTimer" parent="." index="0"]
+wait_time = 2.0
+
+[node name="EndTimer" parent="." index="1"]
+wait_time = 10.0

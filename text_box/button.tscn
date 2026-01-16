@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ptt71q0lsxgx"]
+
+[ext_resource type="Theme" uid="uid://cf0xm6i8snote" path="res://themes/theme.tres" id="1_brvii"]
+[ext_resource type="Script" uid="uid://dfhk8db4jtrx3" path="res://text_box/CustomButton.cs" id="2_8cus2"]
+[ext_resource type="AudioStream" uid="uid://bg6fcjorkrh23" path="res://sounds/snd_squeak.wav" id="3_jdx2s"]
+
+[node name="Button" type="Button"]
+modulate = Color(1, 1, 1, 0.498039)
+custom_minimum_size = Vector2(100, 50)
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_brvii")
+alignment = 0
+script = ExtResource("2_8cus2")
+
+[node name="text" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 0
+offset_right = 186.0
+offset_bottom = 69.0
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Football"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_jdx2s")

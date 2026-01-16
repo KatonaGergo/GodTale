@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvsoixker4k6d"]
+
+[ext_resource type="Script" path="res://soul/Particle.cs" id="1_b8p28"]
+
+[sub_resource type="Gradient" id="Gradient_death"]
+offsets = PackedFloat32Array(0, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="DeathParticle" type="CPUParticles2D"]
+emitting = false
+amount = 50
+lifetime = 7.0
+one_shot = true
+speed_scale = 7.0
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 18.39
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 323.48
+initial_velocity_max = 323.48
+angular_velocity_min = 148.7
+angular_velocity_max = 148.7
+linear_accel_max = 30.43
+damping_max = 20.109
+scale_amount_min = 5.0
+scale_amount_max = 100.0
+color_ramp = SubResource("Gradient_death")
+script = ExtResource("1_b8p28")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

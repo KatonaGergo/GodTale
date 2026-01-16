@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://jciddngihwq7"]
+
+[ext_resource type="Script" uid="uid://d01elq4iyte3j" path="res://soul/Particle.cs" id="1_38bc7"]
+
+[sub_resource type="Gradient" id="Gradient_gqsso"]
+offsets = PackedFloat32Array(0, 0.990164)
+colors = PackedColorArray(1.29953e-06, 0.570002, 0.453841, 1, 0, 0.568627, 0.454902, 0)
+
+[node name="BulletParticle" type="CPUParticles2D"]
+emitting = false
+amount = 10
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 323.48
+initial_velocity_max = 323.48
+angular_velocity_min = 148.7
+angular_velocity_max = 148.7
+linear_accel_max = 100.0
+damping_min = 50.0
+damping_max = 50.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_gqsso")
+script = ExtResource("1_38bc7")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

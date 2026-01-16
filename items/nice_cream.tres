@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://buheun3jb126i"]
+
+[ext_resource type="Script" uid="uid://dbvbvno541adu" path="res://items/Item.cs" id="1_eir7d"]
+
+[resource]
+script = ExtResource("1_eir7d")
+ItemName = "Nice Cream"
+Text = "* You licked the Nice cream...
+  it was very nice!"

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cowlpeawlvafn"]
+
+[ext_resource type="Script" uid="uid://cxsnx4tvhus7o" path="res://battle/TextBox.cs" id="1_35xxs"]
+[ext_resource type="AudioStream" uid="uid://x8op6wfspisx" path="res://sounds/SND_TXT2.wav" id="2_js0o0"]
+
+[node name="TextBox" type="RichTextLabel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 30.0
+offset_right = -25.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "* Godot hopped close !"
+scroll_active = false
+visible_characters_behavior = 1
+script = ExtResource("1_35xxs")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_js0o0")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.05
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

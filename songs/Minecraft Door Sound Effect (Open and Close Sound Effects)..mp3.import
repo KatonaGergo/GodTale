@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1yuce6kgpung"
+path="res://.godot/imported/Minecraft Door Sound Effect (Open and Close Sound Effects)..mp3-5f64ec62e81eb7c7c8d8aef04487d251.mp3str"
+
+[deps]
+
+source_file="res://songs/Minecraft Door Sound Effect (Open and Close Sound Effects)..mp3"
+dest_files=["res://.godot/imported/Minecraft Door Sound Effect (Open and Close Sound Effects)..mp3-5f64ec62e81eb7c7c8d8aef04487d251.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

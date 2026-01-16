@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://vy7eelm7fbgd"]
+
+[ext_resource type="Script" uid="uid://bs1k3j32otdkj" path="res://bullets/LinearBullet.cs" id="1_j3t7x"]
+[ext_resource type="PackedScene" uid="uid://c6cn3s1xtkoow" path="res://bullets/bullet.tscn" id="1_obpkm"]
+
+[node name="LinearBullet" instance=ExtResource("1_obpkm")]
+script = ExtResource("1_j3t7x")

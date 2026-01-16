@@ -1,0 +1,9 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://csydro8kv18q5"]
+
+[ext_resource type="Texture2D" uid="uid://c13q6xhl3olns" path="res://Assets/Sprites/Tiles/window_border.png" id="1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b8mex"]
+texture = ExtResource("1")
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_b8mex")

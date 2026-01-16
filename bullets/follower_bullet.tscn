@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3nfnvovig4f7"]
+
+[ext_resource type="Script" uid="uid://djxnjgod6ymob" path="res://bullets/FollowerBullet.cs" id="1_4btat"]
+[ext_resource type="PackedScene" uid="uid://c6cn3s1xtkoow" path="res://bullets/bullet.tscn" id="1_78xp2"]
+[ext_resource type="Texture2D" uid="uid://cllhluuapyh2q" path="res://sprites/icon_monochrome_dark.png" id="2_4btat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqqeo"]
+size = Vector2(31, 30)
+
+[node name="Bullet" instance=ExtResource("1_78xp2")]
+script = ExtResource("1_4btat")
+speed = 100
+freed_on_hit = false
+
+[node name="ColorRect" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_4btat")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("RectangleShape2D_oqqeo")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+position = Vector2(0.5, 0)
+scale = Vector2(2.55, 2.3)

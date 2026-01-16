@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cxoa4407vpjc4"
+path="res://.godot/imported/Undertale Sound - Monster Dust.mp3-1a273fbac6d06c6660c74dde95314455.mp3str"
+
+[deps]
+
+source_file="res://sounds/Undertale Sound - Monster Dust.mp3"
+dest_files=["res://.godot/imported/Undertale Sound - Monster Dust.mp3-1a273fbac6d06c6660c74dde95314455.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

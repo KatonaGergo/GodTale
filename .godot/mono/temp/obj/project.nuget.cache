@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "9zoAtg5jTM8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Dári Andrea\\Desktop\\GodTale-CSharp\\UndertaleBattle.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Dári Andrea\\.nuget\\packages\\godot.sourcegenerators\\4.5.1\\godot.sourcegenerators.4.5.1.nupkg.sha512",
+    "C:\\Users\\Dári Andrea\\.nuget\\packages\\godotsharp\\4.5.1\\godotsharp.4.5.1.nupkg.sha512",
+    "C:\\Users\\Dári Andrea\\.nuget\\packages\\godotsharpeditor\\4.5.1\\godotsharpeditor.4.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}

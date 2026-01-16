@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://csj3basn1h8wt"]
+
+[ext_resource type="Script" uid="uid://dbvbvno541adu" path="res://items/Item.cs" id="1_pv0u0"]
+
+[resource]
+script = ExtResource("1_pv0u0")
+ItemName = "Apple"
+Text = "* You took a big bite out of the Apple...
+*it tasted like Kris's hair!"

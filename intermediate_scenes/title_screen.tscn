@@ -1,0 +1,139 @@
+[gd_scene load_steps=13 format=3 uid="uid://cnxrqinpyif6b"]
+
+[ext_resource type="Script" uid="uid://ce81wwjperdmy" path="res://intermediate_scenes/TitleScreen.cs" id="1_k6j6k"]
+[ext_resource type="PackedScene" uid="uid://ycbjbgr0j33j" path="res://enemy_data/godot.tscn" id="2_s06oh"]
+[ext_resource type="PackedScene" uid="uid://bkavs6k60jki1" path="res://enemy_data/poseur.tscn" id="3_cdqcp"]
+[ext_resource type="PackedScene" uid="uid://b63wldbutwctw" path="res://enemy_data/cherry.tscn" id="4_nlcaa"]
+[ext_resource type="PackedScene" uid="uid://bghmxuapoqdkl" path="res://enemy_data/present.tscn" id="5_l7hfw"]
+[ext_resource type="AudioStream" uid="uid://bg6fcjorkrh23" path="res://sounds/snd_squeak.wav" id="6_j7611"]
+[ext_resource type="AudioStream" uid="uid://djqdydriokqwc" path="res://songs/Start Menu 4.mp3" id="7_p0kfs"]
+[ext_resource type="AudioStream" uid="uid://bxekddqiujn1l" path="res://sounds/encounter.wav" id="8_l0cca"]
+[ext_resource type="AudioStream" uid="uid://dmgl333tdqf37" path="res://sounds/Undertale Sound Effect - Encounter Full.mp3" id="9_sv2u5"]
+
+[sub_resource type="Animation" id="Animation_l0cca"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_p0kfs"]
+resource_name = "default"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.25, 1.25), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, 0.0, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l0cca"]
+_data = {
+&"RESET": SubResource("Animation_l0cca"),
+&"default": SubResource("Animation_p0kfs")
+}
+
+[node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_k6j6k")
+enemies = Array[PackedScene]([ExtResource("2_s06oh"), ExtResource("3_cdqcp"), ExtResource("4_nlcaa"), ExtResource("5_l7hfw")])
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BattlesContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Title" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -595.0
+offset_top = 134.0
+offset_right = 605.0
+offset_bottom = 321.0
+grow_horizontal = 2
+pivot_offset = Vector2(600, 60.5)
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[rainbow freq=.01 sat=0.8 val=.8 speed=1.0]Undertale in Godot i.e GodTale[/rainbow]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_j7611")
+
+[node name="Song" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_p0kfs")
+autoplay = true
+
+[node name="Encounter1" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_l0cca")
+
+[node name="Encounter2" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_sv2u5")
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_l0cca")
+}
+autoplay = "default"

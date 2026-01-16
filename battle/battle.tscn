@@ -1,0 +1,611 @@
+[gd_scene load_steps=44 format=3 uid="uid://45qmet5s5aix"]
+
+[ext_resource type="Script" uid="uid://gr3mvtigcwiv" path="res://battle/Battle.cs" id="1_mqutd"]
+[ext_resource type="Script" uid="uid://dbvbvno541adu" path="res://items/Item.cs" id="2_a56dj"]
+[ext_resource type="Resource" uid="uid://cdwpd7gdg4qdj" path="res://items/pie.tres" id="3_dxsh4"]
+[ext_resource type="FontFile" uid="uid://bsdludjyf4ury" path="res://themes/undertale-damage.otf" id="3_hvjow"]
+[ext_resource type="Resource" uid="uid://csj3basn1h8wt" path="res://items/apple.tres" id="4_phvbk"]
+[ext_resource type="Resource" uid="uid://buheun3jb126i" path="res://items/nice_cream.tres" id="5_sf8fp"]
+[ext_resource type="AudioStream" uid="uid://byp2svo436sh6" path="res://sounds/snd_select.wav" id="6_l1kiu"]
+[ext_resource type="Texture2D" uid="uid://budfuioj3f6wu" path="res://sprites/Undertale.png" id="7_2t7ue"]
+[ext_resource type="AudioStream" uid="uid://bg6fcjorkrh23" path="res://sounds/snd_squeak.wav" id="7_7fucf"]
+[ext_resource type="PackedScene" uid="uid://cowlpeawlvafn" path="res://text_box/text_box.tscn" id="7_7njrs"]
+[ext_resource type="AudioStream" uid="uid://dhbvccgm7a5sj" path="res://sounds/snd_hurt1.wav" id="8_iorop"]
+[ext_resource type="AudioStream" uid="uid://8uape5wkyje4" path="res://sounds/snd_laz.wav" id="9_rxlun"]
+[ext_resource type="PackedScene" uid="uid://cedvngba5pql2" path="res://text_box/monster_text_box.tscn" id="10_as1q7"]
+[ext_resource type="AudioStream" uid="uid://bo5dxmxjbqcuc" path="res://sounds/snd_heal_c.wav" id="10_vlrs1"]
+[ext_resource type="FontFile" uid="uid://61kg45th28eb" path="res://themes/DTM-Mono.otf" id="11_7njrs"]
+[ext_resource type="Texture2D" uid="uid://dcghcrt5bpk2p" path="res://sprites/stab/spr_slice_o_0.png" id="12_as1q7"]
+[ext_resource type="AudioStream" uid="uid://cxoa4407vpjc4" path="res://sounds/Undertale Sound - Monster Dust.mp3" id="12_qybyd"]
+[ext_resource type="Texture2D" uid="uid://ckuqxua4m57lc" path="res://sprites/stab/spr_slice_o_1.png" id="13_7njrs"]
+[ext_resource type="AudioStream" uid="uid://cnunm8axqgv8s" path="res://sounds/snd_break2.wav" id="13_eu6g2"]
+[ext_resource type="Texture2D" uid="uid://dj70g88kuxjlc" path="res://sprites/stab/spr_slice_o_2.png" id="14_2t7ue"]
+[ext_resource type="Texture2D" uid="uid://7fb0mq50gkc2" path="res://sprites/stab/spr_slice_o_3.png" id="15_j5lq4"]
+[ext_resource type="Texture2D" uid="uid://vypbmv8oyr11" path="res://sprites/stab/spr_slice_o_4.png" id="16_562sy"]
+[ext_resource type="Texture2D" uid="uid://il3waeawr7kr" path="res://sprites/stab/spr_slice_o_5.png" id="17_kc5qh"]
+[ext_resource type="PackedScene" uid="uid://qg7ksrbtkou6" path="res://autoloads/fade_to_black.tscn" id="18_2t7ue"]
+[ext_resource type="Texture2D" uid="uid://qmi8o2j171cs" path="res://sprites/bg.png" id="19_phvbk"]
+[ext_resource type="AudioStream" uid="uid://byrdnb2dtwnud" path="res://sounds/Undertale Sound Effect - Attack Hit 4.mp3" id="26_7njrs"]
+[ext_resource type="AudioStream" uid="uid://xandhxe1l75f" path="res://sounds/Yellow SOUL shoot.wav" id="28_j5lq4"]
+
+[sub_resource type="Animation" id="Animation_6hnvb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Box/AttackLine:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Box:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Monster:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/BlackScreen:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Monster/MonsterSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Monster/MonsterSprite:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qubjc"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Box/AttackLine:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7, 40), Vector2(1100, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_vlrs1"]
+resource_name = "die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monster/MonsterSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7fucf"]
+resource_name = "end_hell"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Box:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l1kiu"]
+resource_name = "fade_into_black"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qybyd"]
+resource_name = "enemy_hurt"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monster/MonsterSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.166667, 0.233333, 0.3, 0.366667, 0.433333, 0.5, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(-10, 0), Vector2(10, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_phvbk"]
+resource_name = "stab"
+
+[sub_resource type="Animation" id="Animation_4mnim"]
+resource_name = "start_hell"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Box:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4mnim"]
+_data = {
+&"RESET": SubResource("Animation_6hnvb"),
+&"attack": SubResource("Animation_qubjc"),
+&"die": SubResource("Animation_vlrs1"),
+&"end_hell": SubResource("Animation_7fucf"),
+&"fade_into_black": SubResource("Animation_l1kiu"),
+&"monster_hurt": SubResource("Animation_qybyd"),
+&"stab": SubResource("Animation_phvbk"),
+&"start_hell": SubResource("Animation_4mnim")
+}
+
+[sub_resource type="Gradient" id="Gradient_phvbk"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sf8fp"]
+gradient = SubResource("Gradient_phvbk")
+
+[sub_resource type="Gradient" id="Gradient_sf8fp"]
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ihybe"]
+gradient = SubResource("Gradient_sf8fp")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7njrs"]
+size = Vector2(1, 290)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t7ue"]
+size = Vector2(1180, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1e446"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_as1q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_7njrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2t7ue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j5lq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_562sy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kc5qh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_mqutd")
+items = Array[ExtResource("2_a56dj")]([ExtResource("3_dxsh4"), ExtResource("4_phvbk"), ExtResource("5_sf8fp")])
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_4mnim")
+}
+
+[node name="BG" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(640, 492)
+scale = Vector2(2, 2)
+texture = ExtResource("19_phvbk")
+
+[node name="UI" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 640.0
+offset_top = 522.0
+offset_right = 640.0
+offset_bottom = 522.0
+
+[node name="StatsAndButtons" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -547.0
+offset_top = 259.0
+offset_right = 585.0
+offset_bottom = 384.0
+theme_override_constants/separation = 20
+
+[node name="StatsContainer" type="HBoxContainer" parent="UI/StatsAndButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Name" type="Label" parent="UI/StatsAndButtons/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Chara"
+
+[node name="LV" type="Label" parent="UI/StatsAndButtons/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "LV 1"
+
+[node name="HP" type="Label" parent="UI/StatsAndButtons/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "HP"
+
+[node name="HPBar" type="TextureProgressBar" parent="UI/StatsAndButtons/StatsContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 0, 1)
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+max_value = 20.0
+value = 20.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_sf8fp")
+texture_progress = SubResource("GradientTexture2D_ihybe")
+
+[node name="HP2" type="Label" parent="UI/StatsAndButtons/StatsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(168, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "20 / 20"
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="UI/StatsAndButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="AttackButton" type="Button" parent="UI/StatsAndButtons/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Attack"
+
+[node name="ActButton" type="Button" parent="UI/StatsAndButtons/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Act"
+
+[node name="ItemButton" type="Button" parent="UI/StatsAndButtons/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Item"
+
+[node name="MercyButton" type="Button" parent="UI/StatsAndButtons/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Mercy"
+
+[node name="Box" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -590.0
+offset_top = -55.0
+offset_right = 590.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(590, 145)
+color = Color(0, 0, 0, 1)
+
+[node name="AttackBar" type="Sprite2D" parent="UI/Box"]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(588.998, 145.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_2t7ue")
+region_rect = Rect2(7.04988, 24.3621, 558.95, 125.045)
+
+[node name="AttackLine" type="ColorRect" parent="UI/Box"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -583.0
+offset_top = -82.0
+offset_right = -555.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(14, 100)
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="UI/Box/AttackLine"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="OptionsContainer" type="GridContainer" parent="UI/Box"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 400
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="TextBox" parent="UI/Box" instance=ExtResource("7_7njrs")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.022
+anchor_top = 0.069
+anchor_right = 0.976
+anchor_bottom = 0.928
+offset_left = 5.92
+offset_top = 6.91999
+offset_right = 5.71594
+offset_bottom = 7.06598
+bbcode_enabled = true
+
+[node name="Border" type="StaticBody2D" parent="UI/Box"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Box/Border"]
+position = Vector2(0, 147.5)
+shape = SubResource("RectangleShape2D_7njrs")
+
+[node name="Border2" type="StaticBody2D" parent="UI/Box"]
+unique_name_in_owner = true
+position = Vector2(1180, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Box/Border2"]
+position = Vector2(0, 147.5)
+shape = SubResource("RectangleShape2D_7njrs")
+
+[node name="Border3" type="StaticBody2D" parent="UI/Box"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Box/Border3"]
+position = Vector2(590, 0)
+shape = SubResource("RectangleShape2D_2t7ue")
+
+[node name="Border4" type="StaticBody2D" parent="UI/Box"]
+position = Vector2(0, 290)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Box/Border4"]
+position = Vector2(590, 0)
+shape = SubResource("RectangleShape2D_2t7ue")
+
+[node name="Monster" type="Node2D" parent="." groups=["enemy"]]
+unique_name_in_owner = true
+position = Vector2(645, 213)
+
+[node name="MonsterSprite" type="Sprite2D" parent="Monster"]
+unique_name_in_owner = true
+
+[node name="SpeechBox" type="ColorRect" parent="Monster"]
+unique_name_in_owner = true
+visible = false
+offset_left = 161.0
+offset_top = -143.0
+offset_right = 451.0
+offset_bottom = 111.0
+
+[node name="Traingle" type="ColorRect" parent="Monster/SpeechBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.031
+anchor_bottom = 0.035
+offset_left = 2.0
+offset_top = 96.0
+offset_right = 33.01
+offset_bottom = 127.11
+rotation = 0.785398
+
+[node name="MonsterTextBox" parent="Monster/SpeechBox" instance=ExtResource("10_as1q7")]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.045
+anchor_top = 0.063
+anchor_right = 0.969
+anchor_bottom = 0.953
+offset_left = -0.0500002
+offset_top = -0.00200081
+offset_right = -0.0100098
+offset_bottom = -0.0620117
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("11_7njrs")
+theme_override_font_sizes/normal_font_size = 30
+text = " Hello!sdfghjgfds"
+
+[node name="Knife" type="AnimatedSprite2D" parent="Monster"]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1e446")
+frame = 5
+frame_progress = 1.0
+
+[node name="Damage" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 744.0
+offset_top = 233.0
+offset_right = 962.0
+offset_bottom = 303.0
+pivot_offset = Vector2(109, 35)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 50
+theme_override_fonts/font = ExtResource("3_hvjow")
+theme_override_font_sizes/font_size = 70
+text = "Miss"
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="DebugMarker" type="Marker2D" parent="."]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("18_2t7ue")]
+unique_name_in_owner = true
+
+[node name="UiCooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+one_shot = true
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("6_l1kiu")
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("7_7fucf")
+
+[node name="SoulHitSound" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("8_iorop")
+
+[node name="KnifeSlashSound" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("9_rxlun")
+
+[node name="UseItemSound" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("10_vlrs1")
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+autoplay = true
+
+[node name="BattleDone" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("12_qybyd")
+
+[node name="SoulBreak" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("13_eu6g2")
+
+[node name="MonsterHurtSound" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("26_7njrs")
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="Sounds"]
+unique_name_in_owner = true
+stream = ExtResource("28_j5lq4")
+
+[connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]
+[connection signal="pressed" from="UI/StatsAndButtons/ButtonsContainer/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="UI/StatsAndButtons/ButtonsContainer/ActButton" to="." method="_on_act_button_pressed"]
+[connection signal="pressed" from="UI/StatsAndButtons/ButtonsContainer/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="UI/StatsAndButtons/ButtonsContainer/MercyButton" to="." method="_on_mercy_button_pressed"]
+[connection signal="animation_finished" from="Monster/Knife" to="." method="_on_knife_animation_finished"]

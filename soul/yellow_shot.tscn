@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c53touampkpns"]
+
+[ext_resource type="Script" uid="uid://d4k8qvgrveunc" path="res://soul/YellowShot.cs" id="1_78igh"]
+[ext_resource type="Texture2D" uid="uid://q323cmijg11p" path="res://sprites/spr_yellowbullet_pl_5.png" id="2_q2ekm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gthao"]
+
+[node name="YellowShot" type="Area2D"]
+script = ExtResource("1_78igh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_q2ekm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_gthao")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4n3v4xusjbjm"]
+
+[ext_resource type="PackedScene" uid="uid://b8swhgvxqle3i" path="res://waves/wave.tscn" id="1_8qpvo"]
+[ext_resource type="Script" uid="uid://binrv8ehf84v4" path="res://waves/Shoot3.cs" id="2_7a0vu"]
+[ext_resource type="PackedScene" uid="uid://gjkaog25qkwy" path="res://bullets/simple_shootable.tscn" id="3_itoqs"]
+
+[node name="Shoot3" instance=ExtResource("1_8qpvo")]
+script = ExtResource("2_7a0vu")
+Mode = 2
+BoxSize = Vector2(0.05, 2)
+BoxSizeChangeTime = 0.5
+BulletScene = ExtResource("3_itoqs")
+
+[node name="SpawnTimer" parent="." index="0"]
+wait_time = 2.0
+
+[node name="EndTimer" parent="." index="1"]
+wait_time = 10.0

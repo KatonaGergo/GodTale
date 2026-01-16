@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxfj73jvyfisf"]
+
+[ext_resource type="PackedScene" uid="uid://b8swhgvxqle3i" path="res://waves/wave.tscn" id="1_v53xw"]
+[ext_resource type="Script" uid="uid://bttpsjhqlyisa" path="res://waves/Shoot1.cs" id="2_y5srv"]
+[ext_resource type="PackedScene" uid="uid://gjkaog25qkwy" path="res://bullets/simple_shootable.tscn" id="3_3iwr3"]
+
+[sub_resource type="Curve2D" id="Curve2D_ynafl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -300, 0, 0, 0, 0, 0, 300, 0)
+}
+point_count = 2
+
+[node name="Shoot1" instance=ExtResource("1_v53xw")]
+script = ExtResource("2_y5srv")
+Mode = 2
+BulletScene = ExtResource("3_3iwr3")
+
+[node name="SpawnTimer" parent="." index="0"]
+wait_time = 0.2
+
+[node name="EndTimer" parent="." index="1"]
+wait_time = 10.0
+
+[node name="Instructions" type="RichTextLabel" parent="." index="2"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.498039)
+offset_right = 410.0
+offset_bottom = 103.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Press Spacebar to shoot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Path2D" type="Path2D" parent="." index="3"]
+curve = SubResource("Curve2D_ynafl")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0"]
+unique_name_in_owner = true
+position = Vector2(-300, 0)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://gjkaog25qkwy"]
+
+[ext_resource type="PackedScene" uid="uid://vy7eelm7fbgd" path="res://bullets/linear_bullet.tscn" id="1_4dv3r"]
+
+[node name="SimpleShootable" instance=ExtResource("1_4dv3r")]
+rotation = 3.14159
+Shootable = true
+
+[node name="ColorRect" parent="." index="0"]
+color = Color(0.239326, 0.484585, 0.702933, 1)
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+visible = false

@@ -1,0 +1,9 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dremlqr0s3613"]
+
+[ext_resource type="Texture2D" uid="uid://dpypyeq5m4bna" path="res://Assets/Sprites/Tiles/large_labyrinth.png" id="1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b0r7w"]
+texture = ExtResource("1")
+
+[resource]
+sources/4 = SubResource("TileSetAtlasSource_b0r7w")

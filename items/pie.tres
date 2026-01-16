@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cdwpd7gdg4qdj"]
+
+[ext_resource type="Script" uid="uid://dbvbvno541adu" path="res://items/Item.cs" id="1_vl04e"]
+
+[resource]
+script = ExtResource("1_vl04e")
+ItemName = "Pie"
+Text = "* You ate the Pie...
+  But it turned out to be 3.14159265359
+  HP recovered anyway!
+"
